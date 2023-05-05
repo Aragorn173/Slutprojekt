@@ -70,7 +70,6 @@ public class ClientController extends JFrame {
         ClientController thisIsTheProgram = new ClientController(m,v);
         thisIsTheProgram.setVisible(true);
         m.setName(JOptionPane.showInputDialog("Name?"));
-        v.listAddUser(m.getName());
 
 
         m.getStreams();

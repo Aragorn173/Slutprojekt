@@ -23,7 +23,7 @@ private ServerController out;
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            out.newmessage(msg);
+            out.newMessage(msg);
         }
     }
     public void stop() {

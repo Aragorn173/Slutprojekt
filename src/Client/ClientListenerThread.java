@@ -23,7 +23,7 @@ public class ClientListenerThread implements Runnable{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            out.newmessage(msg);
+            out.newMessage(msg);
         }
     }
     public void stop() {

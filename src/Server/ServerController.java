@@ -71,7 +71,6 @@ public class ServerController extends JFrame {
         ServerController thisIsTheProgram = new ServerController(m,v);
         thisIsTheProgram.setVisible(true);
         m.setName(JOptionPane.showInputDialog("Name?"));
-        v.listAddUser(m.getName());
 
         m.acceptClient();
         m.getStreams();
