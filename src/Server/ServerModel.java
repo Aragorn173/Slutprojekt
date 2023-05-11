@@ -1,5 +1,6 @@
 package Server;
 
+import javax.swing.*;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -38,6 +39,19 @@ public class ServerModel {
 
     public void sendMessage(String msg) {
         out.println(name + ": " + msg);
+    }
+
+    public void sendChallenge(String name) {
+        setMsg(name + " HAS CHALLENGED YOU!");
+        out.println(msg);
+    }
+
+
+    public void receiveChallenge(String msg) {
+        if (msg == name + " HAS CHALLENGED YOU!") {
+            JOptionPane.showConfirmDialog(null, name + " Has challenged you!\n" + "Do you wish to accept?");
+
+        }
     }
 
     public ServerModel(int port) {

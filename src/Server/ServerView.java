@@ -32,6 +32,7 @@ public class ServerView {
         return sendButton;
     }
 
+    public JButton getChallengeButton() {return challengeButton;}
 }
 
 

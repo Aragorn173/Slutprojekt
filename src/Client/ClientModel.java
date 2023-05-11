@@ -1,5 +1,6 @@
 package Client;
 
+import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -41,6 +42,18 @@ public class ClientModel {
     }
 
 
+    public void sendChallenge(String name) {
+        setMsg(name + " HAS CHALLENGED YOU!");
+        out.println(msg);
+    }
+
+
+    public void receiveChallenge(String msg) {
+        if (msg == name + " HAS CHALLENGED YOU!") {
+            JOptionPane.showConfirmDialog(null, name + " Has challenged you!\n" + "Do you wish to accept?");
+
+        }
+    }
 
 
     public ClientModel(String ip, int port) {

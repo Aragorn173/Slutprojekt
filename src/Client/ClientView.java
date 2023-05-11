@@ -33,6 +33,9 @@ public class ClientView {
         return sendButton;
     }
 
+    public JButton getChallengeButton() {
+        return challengeButton;
+    }
 }
 
 

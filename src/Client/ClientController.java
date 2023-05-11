@@ -26,6 +26,16 @@ public class ClientController extends JFrame {
                 }
             }
         });
+
+        v.getChallengeButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.sendChallenge(model.getName());
+                model.receiveChallenge(model.getMsg());
+            }
+
+        });
+
         v.getEnter().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
