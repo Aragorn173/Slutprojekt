@@ -25,5 +25,5 @@ TOR:
 FRE:
 
 #### vecka 21:
-TOR: fixa problem
+TOR: göra spelet
 FRE: fixa problem
