@@ -1,5 +1,5 @@
-import Client.ClientController;
-import Server.ServerController;
+import CardChat.Client.ClientController;
+import CardChat.Server.ServerController;
 
 public class executable {
 

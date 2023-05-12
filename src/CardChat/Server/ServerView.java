@@ -1,9 +1,8 @@
-package Client;
+package CardChat.Server;
 
 import javax.swing.*;
 
-
-public class ClientView {
+public class ServerView {
     private JTextPane chat;
     private JPanel panel1;
     private JTextField input;
@@ -33,9 +32,7 @@ public class ClientView {
         return sendButton;
     }
 
-    public JButton getChallengeButton() {
-        return challengeButton;
-    }
+    public JButton getChallengeButton() {return challengeButton;}
 }
 
 

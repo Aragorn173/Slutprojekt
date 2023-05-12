@@ -1,17 +1,21 @@
-package Server;
+package CardChat.Client;
 
 import javax.swing.*;
-import java.io.*;
-import java.net.ServerSocket;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class ServerModel {
-    ServerSocket server;
-    Socket client;
+public class ClientModel {
+    public static String getMsg;
+    Socket socket;
 
     PrintWriter out;
     BufferedReader in;
+
+
 
     String msg = "";
 
@@ -34,12 +38,9 @@ public class ServerModel {
     }
 
     public void addMsgToChat(String msg) {
-        chat +=  msg + "\n";
+        chat += msg + "\n";
     }
 
-    public void sendMessage(String msg) {
-        out.println(name + ": " + msg);
-    }
 
     public void sendChallenge(String name) {
         setMsg(name + " HAS CHALLENGED YOU!");
@@ -54,30 +55,21 @@ public class ServerModel {
         }
     }
 
-    public ServerModel(int port) {
-        try {
-            server = new ServerSocket(port);
-        } catch (IOException e) {
-            System.err.println("Failed to open serversocket.");
-            e.printStackTrace();
-        }
-        System.out.println("Server started...");
-    }
 
-    public void acceptClient() {
+    public ClientModel(String ip, int port) {
         try {
-            client = server.accept();
+            socket = new Socket(ip,port);
         } catch (IOException e) {
-            System.err.println("Failed to connect to client");
+            System.err.println("Failed to connect to server");
             e.printStackTrace();
         }
-        System.out.println("client connected...");
+        System.out.println("Connection ready...");
     }
 
     public void getStreams() {
         try {
-            out = new PrintWriter(client.getOutputStream(), true);
-            in = new BufferedReader(new InputStreamReader(client.getInputStream()));
+            out = new PrintWriter(socket.getOutputStream(), true);
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -87,17 +79,19 @@ public class ServerModel {
     public void runProtocol() {
         Scanner tgb = new Scanner(System.in);
         System.out.println("chatting...");
-        String msg = "";
         while (!msg.equals("QUIT")) {
             msg = tgb.nextLine();
-            out.println(name + ": " + msg);
+            out.println(name + ":"  + msg);
         }
     }
 
+    public void sendMessage(String msg) {
+        out.println(name + ": " + msg);
+    }
 
-    public void shutdown() {
+    public void shutDown() {
         try {
-            client.close();
+            socket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

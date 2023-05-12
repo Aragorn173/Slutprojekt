@@ -1,4 +1,4 @@
-package Client;
+package CardChat.Server;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -6,26 +6,29 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class ClientController extends JFrame {
-    ClientModel model;
-    ClientView view;
+public class ServerController extends JFrame {
+    ServerModel model;
+    ServerView view;
 
-    public ClientController(ClientModel m, ClientView v) {
+    public ServerController(ServerModel m, ServerView v) {
         this.model = m;
         this.view = v;
-        this.setTitle("Client");
+        this.setTitle("Server");
+
         v.getSendButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.setMsg(view.getInput());
                 if (model.getMsg().length() > 0) {
-                    model.addMsgToChat(model.getName() + ": " + model.getMsg());
+                    model.addMsgToChat(model.getName() + ": " +model.getMsg());
                     view.setChat(model.getChat());
                     model.sendMessage(model.getMsg());
                     view.setInput("");
                 }
+
             }
         });
+
 
         v.getChallengeButton().addActionListener(new ActionListener() {
             @Override
@@ -68,27 +71,26 @@ public class ClientController extends JFrame {
         this.setVisible(true);
         v.getSendButton();
 
+
     }
 
 
 
     public static void main(String[] args) {
-        ClientModel m = new ClientModel("10.80.45.137", 1731);
-        //ClientModel m = new ClientModel("10.80.47.10", 5858); //Alexander
-        //ClientModel m = new ClientModel("10.80.46.193", 4739); //Alexander
-        ClientView v = new ClientView();
-        ClientController thisIsTheProgram = new ClientController(m,v);
+        ServerModel m = new ServerModel(1731);
+        ServerView v = new ServerView();
+        ServerController thisIsTheProgram = new ServerController(m,v);
         thisIsTheProgram.setVisible(true);
         m.setName(JOptionPane.showInputDialog("Name?"));
 
-
+        m.acceptClient();
         m.getStreams();
-        ClientListenerThread l = new ClientListenerThread(m.in, thisIsTheProgram);
+        ServerListenerThread l = new ServerListenerThread(m.in, thisIsTheProgram);
         Thread listener = new Thread(l);
         listener.start();
         m.runProtocol();
         listener.stop();
-        m.shutDown();
+        m.shutdown();
     }
 
     public void newMessage(String msg) {

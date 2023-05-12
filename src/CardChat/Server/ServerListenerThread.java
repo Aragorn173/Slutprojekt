@@ -1,4 +1,4 @@
-package Server;
+package CardChat.Server;
 
 import java.io.BufferedReader;
 import java.io.IOException;
