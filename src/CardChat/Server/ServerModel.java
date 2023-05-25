@@ -47,11 +47,15 @@ public class ServerModel {
     }
 
 
-    public void receiveChallenge(String msg) {
-        if (msg == name + " HAS CHALLENGED YOU!") {
-            JOptionPane.showConfirmDialog(null, name + " Has challenged you!\n" + "Do you wish to accept?");
+    public void receiveChallenge(String name) {
+           int acceptChallange =  JOptionPane.showConfirmDialog(null, name + " Has challenged you!\n" + "Do you wish to accept?");
 
-        }
+           if (acceptChallange == 0) {
+               human player1 = new human(name, 100,10);
+               human player2 = new human("player2", 100,10);
+               player1.battle(player2);
+
+           }
     }
 
     public ServerModel(int port) {

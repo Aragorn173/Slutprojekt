@@ -25,5 +25,5 @@ TOR:
 FRE:
 
 #### vecka 21:
-TOR: göra spelet
-FRE: fixa problem
+TOR: implementera så man kan spela mot den andra personen
+FRE: se till att spelar vid rätt tillfälle

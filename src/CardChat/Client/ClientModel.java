@@ -48,11 +48,10 @@ public class ClientModel {
     }
 
 
-    public void receiveChallenge(String msg) {
-        if (msg == name + " HAS CHALLENGED YOU!") {
+    public void receiveChallenge(String name) {
+
             JOptionPane.showConfirmDialog(null, name + " Has challenged you!\n" + "Do you wish to accept?");
 
-        }
     }
 
 
