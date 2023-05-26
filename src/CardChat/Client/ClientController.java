@@ -31,7 +31,7 @@ public class ClientController extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.sendChallenge(model.getName());
-                model.receiveChallenge(model.getName());
+                model.receiveChallenge(model.getMsg(), model.getName());
 
             }
 

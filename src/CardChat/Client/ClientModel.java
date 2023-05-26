@@ -1,5 +1,7 @@
 package CardChat.Client;
 
+import CardChat.Server.human;
+
 import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -48,10 +50,19 @@ public class ClientModel {
     }
 
 
-    public void receiveChallenge(String name) {
+    public void receiveChallenge(String msg, String name) {
+        System.out.println(name);
+        System.out.println(getMsg());
+        if (getMsg() == name + " HAS CHALLENGED YOU!"){
+            int acceptChallange = JOptionPane.showConfirmDialog(null, name + " Has challenged you!\n" + "Do you wish to accept?");
 
-            JOptionPane.showConfirmDialog(null, name + " Has challenged you!\n" + "Do you wish to accept?");
+            if (acceptChallange == 0) {
+                human player1 = new human(name, 100, 10);
+                human player2 = new human("player2", 100, 10);
+                player1.battle(player2);
 
+            }
+        }
     }
 
 
