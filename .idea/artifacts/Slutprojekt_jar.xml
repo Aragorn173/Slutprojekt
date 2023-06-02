@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Slutprojekt:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Slutprojekt_jar</output-path>
+    <root id="archive" name="Slutprojekt.jar">
+      <element id="module-output" name="Slutprojekt" />
+    </root>
+  </artifact>
+</component>
