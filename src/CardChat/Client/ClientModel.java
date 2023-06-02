@@ -51,8 +51,6 @@ public class ClientModel {
 
 
     public void receiveChallenge(String msg, String name) {
-        System.out.println(name);
-        System.out.println(getMsg());
         if (getMsg() == name + " HAS CHALLENGED YOU!"){
             int acceptChallange = JOptionPane.showConfirmDialog(null, name + " Has challenged you!\n" + "Do you wish to accept?");
 

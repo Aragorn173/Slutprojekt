@@ -48,8 +48,6 @@ public class ServerModel {
 
 
     public void receiveChallenge(String msg, String name, String chat) {
-        System.out.println(name);
-       // System.out.println(chat);
         if (msg == getName() + " HAS CHALLENGED YOU!") {
             int acceptChallange = JOptionPane.showConfirmDialog(null, name + " Has challenged you!\n" + "Do you wish to accept?");
 
